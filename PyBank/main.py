@@ -3,21 +3,28 @@ import csv
 total_amount = 0
 total_months = 0
 average = 0
+counter = 2
+greatest_profits = []
+greatest_losses = []
 
 path_file = os.path.join('Resources','budget_data.csv')
 #print(f'This is the path file {path_file}')
 
 with open(path_file,newline='') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
-    print(csvreader)
     # next skip the row - header
     csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
+    list_file = list(csvreader)
+total_months = len(list_file)
+average = (float(list_file[total_months-1][1])-float(list_file[0][1]))/(total_months-1)
+for item in list_file:
+    total_amount= total_amount+ float(item[1])
 
-    for row in csvreader:
-        total_amount = total_amount + float(row[1])
-        total_months += 1
-        average = float(row[1])-average
+  
+    
+    #average = list_file{}
+
+
 #average = average/total_months
 
 # with open(path_file) as csvfile:
@@ -33,5 +40,5 @@ print("\n Financial Analysis")
 print("------------------------------------------")
 print(f'Total Months: {total_months}')
 print(f'Total: {total_amount}')
-print(f'Average Change: {average}')
+print(f'Average Change: {"%.2f" % average}')
 print("------------------------------------------\n")    
