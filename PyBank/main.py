@@ -35,7 +35,17 @@ print("\n Financial Analysis")
 print("------------------------------------------")
 print(f'Total Months: {total_months}')
 print(f'Total: {total_amount}')
-print(f'Average Change: {"%.2f" % average}')
+print(f'Average Change: ${"%.2f" % average}')
 print(f'Greatest Increase in Profits: {greatest_profits} ($ {profit_diff})')
 print(f'Greatest Decrease in Profits: {greatest_losses} ($ {losses_diff})')
 print("------------------------------------------\n")    
+
+L = "Financial Analysis\n"+"------------------------------------------\n"+'Total Months: '+ str(total_months)+ '\n'
+L = L + 'Total: '+ str(total_amount)+'\n'+ 'Average Change: $' + str("%.2f" % average) + '\n'
+L = L + 'Greatest Increase in Profits: '+ str(greatest_profits)+ '($'+ str(profit_diff)+')\n'
+L = L + 'Greatest Decrease in Profits: '+ str(greatest_losses)+ '($'+ str(losses_diff)+')\n'
+L = L + "------------------------------------------"
+# Export the results to text file
+txt_file_path = os.path.join('Resources','Output_file.txt')
+with open(txt_file_path, "w") as txt_file:
+    txt_file.write(L)
